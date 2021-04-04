@@ -104,6 +104,13 @@ public class PersianCalendar extends GregorianCalendar {
                 + PersianCalendarUtils.ceil(getTimeInMillis() - PersianCalendarConstants.MILLIS_JULIAN_EPOCH, PersianCalendarConstants.MILLIS_OF_A_DAY);
     }
 
+
+
+    public PersianCalendar(long millis) {
+        setTimeInMillis(millis);
+    }
+    
+
     /**
      * Calculate persian date from current Date and
      * populates the corresponding fields(persianYear, persianMonth, persianDay)

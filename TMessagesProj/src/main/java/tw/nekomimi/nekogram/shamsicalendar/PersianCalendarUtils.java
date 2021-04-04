@@ -52,8 +52,7 @@ public class PersianCalendarUtils {
                 + (month < 7? 31 * month: 30 * month + 6 ) + day;
     }
     
-    
-    
+
     
     /**
      * Calculate whether current year is Leap year in persian or not
