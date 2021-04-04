@@ -109,6 +109,10 @@ public class PersianCalendar extends GregorianCalendar {
     public PersianCalendar(long millis) {
         setTimeInMillis(millis);
     }
+
+
+    public PersianCalendar() {
+    }
     
 
     /**
