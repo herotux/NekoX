@@ -1439,15 +1439,15 @@ public class LocaleController {
         }
         try {
             Calendar calendar = Calendar.getInstance();
+
             calendar.setTimeInMillis(System.currentTimeMillis());
             int currentYear = calendar.get(Calendar.YEAR);
             date *= 1000;
 
             calendar.setTimeInMillis(date);
-            PersianCalendar persianCalendar = null;
-            if (usePersianCalendar) {
-                persianCalendar = new PersianCalendar(date);
-            }
+            PersianCalendar persianCalendar = new PersianCalendar() ;
+            persianCalendar.setTimeInMillis(date);
+           
             if (checkYear && currentYear == calendar.get(Calendar.YEAR) || !checkYear && Math.abs(System.currentTimeMillis() - date) < 31536000000L) {
                 if (usePersianCalendar) {
                     return persianCalendar.getPersianMonthDay();
@@ -1530,10 +1530,9 @@ public class LocaleController {
             rightNow.setTimeInMillis(date);
             int dateDay = rightNow.get(Calendar.DAY_OF_YEAR);
             int dateYear = rightNow.get(Calendar.YEAR);
-            PersianCalendar persianCalendar = null;
-            if (usePersianCalendar) {
-                persianCalendar = new PersianCalendar(date);
-            }
+            PersianCalendar persianCalendar = new PersianCalendar() ;
+            persianCalendar.setTimeInMillis(date);
+            
 
             if (dateDay == day && year == dateYear) {
                 return getInstance().formatterDay.format(new Date(date));
@@ -1616,11 +1615,9 @@ public class LocaleController {
             rightNow.setTimeInMillis(date);
             int dateDay = rightNow.get(Calendar.DAY_OF_YEAR);
             int dateYear = rightNow.get(Calendar.YEAR);
-            PersianCalendar persianCalendar = null;
-            if (usePersianCalendar) {
-                persianCalendar = new PersianCalendar(date);
-            }
-
+            PersianCalendar persianCalendar = new PersianCalendar() ;
+            persianCalendar.setTimeInMillis(date);
+            
             if (dateDay == day && year == dateYear) {
                 return LocaleController.formatString("LastSeenFormatted", R.string.LastSeenFormatted, LocaleController.formatString("TodayAtFormatted", R.string.TodayAtFormatted, getInstance().formatterDay.format(new Date(date))));
                 /*int diff = (int) (ConnectionsManager.getInstance().getCurrentTime() - date) / 60;
