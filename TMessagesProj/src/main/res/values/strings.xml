@@ -4320,4 +4320,5 @@
     <string name="SwipeUnpin">Unpin</string>
     <string name="SwipePin">Pin</string>
     <string name="CancelForwarding">Cancel Forwarding</string>
+    <string name="EditAndForward">Edit And Forward</string>
 </resources>

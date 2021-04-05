@@ -640,6 +640,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private static boolean noForwardQuote;
     private TLRPC.ChatParticipant selectedParticipant;
+    private final static int edit_and_forward = 112;
 
     private Paint scrimPaint;
     private View scrimView;
@@ -19323,6 +19324,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 icons.add(R.drawable.baseline_call_24);
                             }
                         }
+                        items.add(LocaleController.getString("EditAndForward", R.string.EditAndForward));
+                        options.add(edit_and_forward);
                         MessageObject messageObject = getMessageForTranslate();
                         boolean docsWithMessages = false;
                         if (selectedObjectGroup != null && selectedObjectGroup.isDocuments) {
@@ -19940,6 +19943,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private void processSelectedOption(int option) {
         if (selectedObject == null || getParentActivity() == null) {
             return;
+        } else if (option == edit_and_forward){
+            EditAndForwardMessageActivity.toEditMessages = new ArrayList<>();
+            EditAndForwardMessageActivity.toEditMessages.add(selectedObject);
+            EditAndForwardMessageActivity.setParentBaseFragment(ChatActivity.this);
+            Intent popupIntent = new Intent(ApplicationLoader.applicationContext, EditAndForwardMessageActivity.class);
+            popupIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NO_USER_ACTION | Intent.FLAG_FROM_BACKGROUND);
+            ApplicationLoader.applicationContext.startActivity(popupIntent);
         }
         switch (option) {
             case 0: {
@@ -19963,6 +19973,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 break;
             }
+             
             case 1: {
                 if (getParentActivity() == null) {
                     selectedObject = null;
