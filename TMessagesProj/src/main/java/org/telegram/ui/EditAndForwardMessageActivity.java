@@ -67,7 +67,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import org.telegram.messenger.R;
+import tw.nekomimi.nekogram.shamsicalendar.R;
 
 public class EditAndForwardMessageActivity extends Activity implements NotificationCenter.NotificationCenterDelegate {
 
