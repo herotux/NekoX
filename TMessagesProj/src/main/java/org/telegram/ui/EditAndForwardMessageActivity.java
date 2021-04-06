@@ -169,7 +169,7 @@ public class EditAndForwardMessageActivity extends Activity implements Notificat
             AndroidUtilities.statusBarHeight = getResources().getDimensionPixelSize(resourceId);
         }
 
-        classGuid = ConnectionsManager.getInstance().generateClassGuid();
+        classGuid = ConnectionsManager.getInstance(currentAccount).generateClassGuid();
 //        NotificationCenter.getInstance().addObserver(this, NotificationCenter.appDidLogout);
 //        NotificationCenter.getInstance().addObserver(this, NotificationCenter.pushMessagesUpdated);
 //        NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
@@ -1188,7 +1188,7 @@ public class EditAndForwardMessageActivity extends Activity implements Notificat
         if (chatActivityEnterView != null) {
             chatActivityEnterView.setFieldFocused(true);
         }
-        ConnectionsManager.getInstance().setAppPaused(false, false);
+        ConnectionsManager.getInstance(currentAccount).setAppPaused(false, false);
         fixLayout();
         checkAndUpdateAvatar();
         wakeLock.acquire(7000);
@@ -1202,7 +1202,7 @@ public class EditAndForwardMessageActivity extends Activity implements Notificat
             chatActivityEnterView.hidePopup(false);
             chatActivityEnterView.setFieldFocused(false);
         }
-        ConnectionsManager.getInstance().setAppPaused(true, false);
+        ConnectionsManager.getInstance(currentAccount).setAppPaused(true, false);
     }
 
     @Override

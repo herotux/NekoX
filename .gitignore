@@ -11,3 +11,4 @@ service_account_credentials.json
 *.so
 TMessagesProj/.project
 TMessagesProj/.settings/
+.project
